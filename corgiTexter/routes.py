@@ -82,6 +82,8 @@ def save_picture(form_picture):
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
+    posts = Post.query.filter(Post.user_id == current_user.id)
+    
     form = UpdateAccountForm()
     if form.validate_on_submit():
         if form.picture.data:
@@ -99,7 +101,7 @@ def account():
     image_file = url_for('static', filename='profilePics/' +
                          current_user.image_file)
     return render_template('account.html', title='Account',
-                           image_file=image_file, form=form)
+                           image_file=image_file, form=form, posts=posts)
 
 
 @app.route('/post/new', methods=['GET', 'POST'])
