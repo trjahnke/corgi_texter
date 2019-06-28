@@ -119,12 +119,6 @@ def new_post():
                            form=form, legend='New Post')
 
 
-@app.route('/post/<int:post_id>')
-def post(post_id):
-    post = Post.query.get_or_404(post_id)
-    return render_template('post.html', title=post.fact, post=post)
-
-
 @app.route('/post/<int:post_id>/update', methods=['GET', 'POST'])
 @login_required
 def update_post(post_id):

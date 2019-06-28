@@ -13,5 +13,5 @@ This will be the new home of the improved flask application for Corgi Texter
 - [ ] Build to heroku with postgres db
 - [ ] Shut down prior temp project
 - [ ] Auto delete old profile picture after successful update from backend
-- [ ] Add badge to updated/edited posts
+- [X] Add badge to updated/edited posts
 - [ ] Allow users to see post edit history

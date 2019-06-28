@@ -35,8 +35,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <h2><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">{{ post.fact }}</a></h2>
-                <p class="article-content">{{ post.source }}</p>
+                <h2><a class="article-title" href="{{ post.source }}">{{ post.fact }}</a></h2>
         	</div>
         </article>
     {% endfor %}
