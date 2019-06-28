@@ -4,7 +4,7 @@ from flask_wtf.file import FileAllowed, FileField
 from wtforms import (BooleanField, PasswordField, StringField, SubmitField,
                      TextAreaField)
 from wtforms.validators import (DataRequired, Email, EqualTo, Length,
-                                ValidationError)
+                                ValidationError, URL)
 
 from corgiTexter.models import User
 
@@ -60,5 +60,5 @@ class UpdateAccountForm(FlaskForm):
 
 class PostForm(FlaskForm):
     fact = StringField('Fact', validators=[DataRequired()])
-    source = TextAreaField('Source', validators=[DataRequired()])
+    source = StringField('Source', validators=[DataRequired(), URL()])
     submit = SubmitField('Post')
