@@ -2,6 +2,7 @@ from twilio.rest import Client
 from corgiTexter.models import Post
 import random
 from sqlalchemy.sql import func
+import os
 
 ## Twilio API Connection
 account_sid = os.environ['ACCOUNT_SID']
