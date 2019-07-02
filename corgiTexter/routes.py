@@ -7,6 +7,8 @@ from corgiTexter import app, bcrypt, db
 from corgiTexter.forms import (LoginForm, PostForm, RegistrationForm,
                              UpdateAccountForm)
 from corgiTexter.models import Post, User
+from corgiTexter.twilioBackend import factPuller
+from twilio.twiml.messaging_response import MessagingResponse
 
 
 @app.route('/')
@@ -18,7 +20,8 @@ def home():
 
 @app.route('/about')
 def about():
-    return render_template('about.html', title='About')
+    fact, source = factPuller()
+    return render_template('about.html', title='About', fact=fact, source=source)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -149,3 +152,12 @@ def delete_post(post_id):
     db.session.commit()
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('home'))
+
+
+## Connection for the HTTP GET request for Twilio
+@app.route("/sms", methods=['GET', 'POST'])
+def sms_reply():
+    fact, source = factPuller()
+    resp = MessagingResponse()
+    resp.message("{} Source: {}".format(fact, source))
+    return str(resp)
