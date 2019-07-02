@@ -20,8 +20,8 @@ def home():
 
 @app.route('/about')
 def about():
-    fact, source = factPuller()
-    return render_template('about.html', title='About', fact=fact, source=source)
+    corgi_file = url_for('static', filename='corgi.gif')
+    return render_template('about.html', title='About', corgi_file=corgi_file)
 
 
 @app.route('/register', methods=['GET', 'POST'])
