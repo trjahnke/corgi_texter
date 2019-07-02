@@ -11,7 +11,7 @@ h1, h2, h3, h4, h5, h6 {
 .corgi_gif {
   margin: auto;
   width: 50%;
-  border: 3px solid green;
+  border: 0px;
   padding: 10px;
 }
 
