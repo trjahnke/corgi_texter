@@ -9,7 +9,7 @@ from corgiTexter.forms import (LoginForm, PostForm, RegistrationForm,
 from corgiTexter.models import Post, User
 from corgiTexter.twilioBackend import factPuller
 from twilio.twiml.messaging_response import MessagingResponse
-from corgiTexter.admin_portal.admin_main import admin
+from corgiTexter.admin_portal import admin
 
 
 @app.route('/')
@@ -34,7 +34,7 @@ def register():
     if form.validate_on_submit():
         hashed_pw = bcrypt.generate_password_hash(
                                             form.password.data).decode('utf-8')
-        user = User(username=form.username.data, email=form.email.data,
+        user = User(username=form.username.data, email=form.email.data.lower(),
                     password=hashed_pw)
 
         db.session.add(user)
@@ -52,7 +52,7 @@ def login():
 
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        user = User.query.filter_by(email=form.email.data.lower()).first()
         if user and bcrypt.check_password_hash(user.password,
                                                form.password.data):
             login_user(user, remember=form.remember.data)
