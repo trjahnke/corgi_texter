@@ -1,5 +1,4 @@
 from flask_admin import Admin
-from flask import url_for
 from corgiTexter import app, db
 from corgiTexter.admin_portal.admin_models import MyModelViewUser, MyModelViewPost, MyAdminIndexView
 from corgiTexter.models import User, Post
