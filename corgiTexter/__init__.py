@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, url_for
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin
 from flask_sqlalchemy import SQLAlchemy
@@ -8,7 +8,6 @@ import os
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
 # Will be an env later with new key
-
 
 # Database connection
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
