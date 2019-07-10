@@ -9,13 +9,14 @@ from corgiTexter.forms import (LoginForm, PostForm, RegistrationForm,
 from corgiTexter.models import Post, User
 from corgiTexter.twilioBackend import factPuller
 from twilio.twiml.messaging_response import MessagingResponse
+from corgiTexter.admin_portal.admin_main import admin
 
 
 @app.route('/')
 @app.route('/home')
 def home():
     posts = Post.query.order_by(Post.date_posted.desc()).all()
-    return render_template('home.html', posts=posts)
+    return render_template('home.html', posts=posts, current_user=current_user)
 
 
 @app.route('/about')

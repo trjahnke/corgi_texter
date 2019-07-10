@@ -1,6 +1,7 @@
 .vscode/
 myenv/
 __pycache__/
+__init__.pyc
 
 site.db
 
