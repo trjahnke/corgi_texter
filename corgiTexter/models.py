@@ -17,11 +17,11 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(60), nullable=False)
     posts = db.relationship('Post', backref='author', lazy=True)
     active = db.Column(db.Boolean, unique=False, default=True)
-    is_admin = db.Column(db.Boolean, unique=False, default=False)
+    admin_level = db.Column(db.Integer, unique=False, default=0)
 
 
     def __repr__(self):
-        return f"User('{self.username}', '{self.email}', '{self.image_file}', '{self.is_admin})"
+        return f"User('{self.username}', '{self.email}', '{self.image_file}', '{self.admin_level})"
 
 
 class Post(db.Model):

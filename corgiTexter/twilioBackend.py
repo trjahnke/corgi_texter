@@ -8,6 +8,7 @@ import os
 account_sid = os.environ['ACCOUNT_SID']
 auth_token = os.environ['AUTH_TOKEN']
 client = Client(account_sid, auth_token)
+twilio_number = '6123248563'
 
 
 def factPuller():

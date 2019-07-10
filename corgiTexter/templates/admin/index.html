@@ -1,0 +1,20 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Phone Number Override</legend>
+                <p>This section comes with great resonsiblity. Enter whatever cellphone number you would like in the input box below and click submit. The rest of the sytem will take care of the it by randomly selecting a fact from the database which you can acces on the homepage and send to the number entered.</p>
+                <div class="form-group">
+                    {{ form.number.label(class="form-control-label") }}
+                    {{ form.number(class="form-control form-control-lg") }}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+{% endblock %}
