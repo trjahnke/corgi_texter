@@ -1,6 +1,6 @@
 from flask_admin.contrib.sqla import ModelView
 from flask_admin import AdminIndexView, expose
-from corgiTexter import login_manager
+from corgiTexter import login_manager, db
 from flask_login import UserMixin, LoginManager, current_user, AnonymousUserMixin
 from flask import redirect, url_for, render_template
 from corgiTexter.models import User, Post
@@ -39,7 +39,18 @@ class MyAdminIndexView(AdminIndexView):
         return redirect(url_for('login'))
     
 
-class MyModelView(ModelView):
+class MyModelViewUser(ModelView):
+    column_list = ('username', 'email', 'image_file', 'active', 'admin_level', 'id')
+    def is_accessible(self):
+        if current_user.is_authenticated and current_user.admin_level == 2:
+            return True
+        else: 
+            return False
+
+class MyModelViewPost(ModelView):
+    column_labels = {'author.username':'Username'}
+    column_list = ['fact', 'source', 'date_posted', 'author.username']
+    
     def is_accessible(self):
         if current_user.is_authenticated and current_user.admin_level == 2:
             return True
