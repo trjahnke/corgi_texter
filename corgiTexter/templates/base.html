@@ -40,7 +40,7 @@
                                 <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
                                 <a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>
                             {% endif %}
-                            {% if current_user.is_admin %}
+                            {% if current_user.admin_level == 1 or current_user.admin_level == 2 %}
                                 <a class="nav-item nav-link" href="/admin">Admin</a>
                             {% endif %}
                         </div>

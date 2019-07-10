@@ -2,7 +2,9 @@
 myenv/
 __pycache__/
 __init__.pyc
-
+corgiTexter/admin_portal/.DS_Store
+corgiTexter/.DS_Store
+.DS_Store
 site.db
 
 envVar
