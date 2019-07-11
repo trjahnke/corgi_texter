@@ -9,7 +9,7 @@ from corgiTexter.forms import (LoginForm, PostForm, RegistrationForm,
 from corgiTexter.models import Post, User
 from corgiTexter.twilioBackend import factPuller
 from twilio.twiml.messaging_response import MessagingResponse
-from corgiTexter.admin_portal import admin
+from corgiTexter.admin_portal.admin_main import admin
 
 
 @app.route('/')
@@ -34,7 +34,7 @@ def register():
     if form.validate_on_submit():
         hashed_pw = bcrypt.generate_password_hash(
                                             form.password.data).decode('utf-8')
-        user = User(username=form.username.data, email=form.email.data.lower(),
+        user = User(username=form.username.data, email=form.email.data,
                     password=hashed_pw)
 
         db.session.add(user)
@@ -52,7 +52,7 @@ def login():
 
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data.lower()).first()
+        user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password,
                                                form.password.data):
             login_user(user, remember=form.remember.data)
@@ -92,7 +92,12 @@ def account():
     if form.validate_on_submit():
         if form.picture.data:
             picture_file = save_picture(form.picture.data)
-            current_user.image_file = picture_file
+            if current_user.image_file != 'default.jpg':
+                temp_image = current_user.image_file
+                current_user.image_file = picture_file
+                os.remove('corgiTexter/static/profilePics/' + temp_image)
+            else:
+                current_user.image_file = picture_file
         current_user.username = form.username.data
         current_user.email = form.email.data
 
@@ -105,7 +110,7 @@ def account():
     image_file = url_for('static', filename='profilePics/' +
                          current_user.image_file)
     return render_template('account.html', title='Account',
-                           image_file=image_file, form=form, posts=posts)
+                           image_file=image_file, form=form, posts=posts, imageTest=current_user.image_file)
 
 
 @app.route('/post/new', methods=['GET', 'POST'])
