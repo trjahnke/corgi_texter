@@ -13,6 +13,6 @@ This will be the new home of the improved flask application for Corgi Texter
 - [ ] Theme and color changes
 - [X] Auto delete old profile picture after successful update from backend
 - [ ] Allow users to see post edit history
-- [ ] Allow users to delete their account
+- [X] Allow users to delete their account
 - [ ] Add column for last login
 - [ ] Use and implement the is_active boolean
