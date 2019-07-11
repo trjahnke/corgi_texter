@@ -9,7 +9,7 @@ from corgiTexter.forms import (LoginForm, PostForm, RegistrationForm,
 from corgiTexter.models import Post, User
 from corgiTexter.twilioBackend import factPuller
 from twilio.twiml.messaging_response import MessagingResponse
-from corgiTexter.admin_portal.admin_main import admin
+from corgiTexter.admin_portal import admin
 
 
 @app.route('/')
