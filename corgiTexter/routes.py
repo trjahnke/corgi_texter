@@ -110,7 +110,7 @@ def account():
     image_file = url_for('static', filename='profilePics/' +
                          current_user.image_file)
     return render_template('account.html', title='Account',
-                           image_file=image_file, form=form, posts=posts, imageTest=current_user.image_file)
+                           image_file=image_file, form=form, posts=posts, imageTest=current_user.image_file, user_id=current_user.id)
 
 
 @app.route('/post/new', methods=['GET', 'POST'])
@@ -157,6 +157,30 @@ def delete_post(post_id):
     db.session.delete(post)
     db.session.commit()
     flash('Your post has been deleted!', 'success')
+    return redirect(url_for('home'))
+
+
+@app.route('/account/<int:user_id>/delete_ap', methods=['POST'])
+@login_required
+def delete_account_posts(user_id):
+    user = User.query.get_or_404(user_id)
+    posts = user.posts
+    for post in posts:
+        db.session.delete(post)
+    db.session.delete(user)
+    db.session.commit()
+    return redirect(url_for('home'))
+
+@app.route('/account/<int:user_id>/delete_a', methods=['POST'])
+@login_required
+def delete_account(user_id):
+    user = User.query.get_or_404(user_id)
+    posts = user.posts
+    for post in posts:
+        post.user_id = 9
+        db.session.commit()
+    db.session.delete(user)
+    db.session.commit()
     return redirect(url_for('home'))
 
 

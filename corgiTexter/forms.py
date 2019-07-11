@@ -44,6 +44,7 @@ class UpdateAccountForm(FlaskForm):
     picture = FileField('Update Profile Picture', validators=[FileAllowed(
                                                              ['jpg', 'png'])])
     submit = SubmitField('Update!')
+    delete = SubmitField('Delete Account!')
 
     def validate_username(self, username):
         if username.data != current_user.username:
