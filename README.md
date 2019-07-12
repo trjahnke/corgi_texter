@@ -1,18 +1,51 @@
 # corgi_texter
-This will be the new home of the improved flask application for Corgi Texter
+Corgi Texter is a two fold application. First and foremost it gives a user quick access to fun facts about corgis. By texting (612)324-8563 you will receive a text with a fun fact and source for that fact to impress your friends and family. This section uses Twilio to handle the number and routing for it. Second, is the front end of the system. It has a mostly fully fledged site which allows you to view all facts that are possible to get via the text. The site also allows users to create an account in order to submit their own facts to help grow the community. This section utilizes the Flask framework with hosting taking place at Heroku with a basic postgres database attachment.
+
+## Getting Started
+These instructions will get you a copy of the project up and running on your local machine.
+
+### Prerequisites
+You will need Python3. Recommended to first start a virtualenv before moving forward.
+What things you need to install the software and how to install them
+
+```sh
+git clone https://github.com/trjahnke/corgi_texter.git
+```
+
+Once you have the repo to cloned to wherever you would like it install all the dependencies from the requirements.txt file
+```sh
+pip install -r requirements.txt
+```
+
+Now to set your secret vars. I have made a basic env file with export commands for the few vars that need to filled in. Replace my placeholders with your secrets and while in you are in your virtualenv run those export commands to make them available to the application. 
+
+
+### Running
+Now that those quick prereqs are done we can now start to tinker with the application itself. There is only a few more steps before we have a live testing environment.
+
+First go into 'run.py' and change the debug flag to 'True'. 
+
+Second, we need to create the database initially. 
+Run the following to start a basic database with the models provided:
+```python
+python
+from corgiTexter import db
+db.create_all()
+exit()
+```
+
+Once that is done we can start up the flask server by running 
+```
+python run.py
+```
+
+Now we have Corgi Texter running locally and you can mess around with it.
+
 
 
 ## ToDo
-- [X] Order the facts by last posted rather than the inverse
-- [X] Move the Twilio project for this into this 
-- [X] Build to heroku with postgres db
-- [X] Shut down prior temp project
-- [X] Add badge to updated/edited posts
-- [X] Fix the responsiveness for the fact titles when the screen shrinks
-- [X] Make a full admin side which will allow them to remove or edits posts without being the owner
-- [ ] Theme and color changes
-- [X] Auto delete old profile picture after successful update from backend
+- [ ] Add walk through in readme about getting the Twilio section setup
 - [ ] Allow users to see post edit history
-- [X] Allow users to delete their account
 - [ ] Add column for last login
 - [ ] Use and implement the is_active boolean
+- [ ] Theme and color changes
