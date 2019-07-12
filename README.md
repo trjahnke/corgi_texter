@@ -6,7 +6,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 You will need Python3. Recommended to first start a virtualenv before moving forward.
-What things you need to install the software and how to install them
+
+You will also need a Twilio account along with a number. (https://www.twilio.com/docs/quickstart/python)
 
 ```sh
 git clone https://github.com/trjahnke/corgi_texter.git
@@ -29,6 +30,7 @@ Second, we need to create the database initially.
 Run the following to start a basic database with the models provided:
 ```python
 python
+
 from corgiTexter import db
 db.create_all()
 exit()
@@ -44,7 +46,7 @@ Now we have Corgi Texter running locally and you can mess around with it.
 
 
 ## ToDo
-- [ ] Add walk through in readme about getting the Twilio section setup
+- [ ] Add automatic ping to keep the server awake
 - [ ] Allow users to see post edit history
 - [ ] Add column for last login
 - [ ] Use and implement the is_active boolean
