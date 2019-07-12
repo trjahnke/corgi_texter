@@ -9,3 +9,6 @@ corgiTexter/.DS_Store
 site.db
 
 envVar
+
+test_corgiTexter.py
+.coverage
