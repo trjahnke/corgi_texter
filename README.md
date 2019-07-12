@@ -1,5 +1,5 @@
 # corgi_texter
-[![Known Vulnerabilities](https://snyk.io//test/github/trjahnke/corgi_texter/badge.svg?targetFile=requirements.txt)](https://snyk.io//test/github/trjahnke/corgi_texter?targetFile=requirements.txt)[![Build Status](https://travis-ci.org/trjahnke/corgi_texter.svg?branch=master)](https://travis-ci.org/trjahnke/corgi_texter)
+[![Known Vulnerabilities](https://snyk.io//test/github/trjahnke/corgi_texter/badge.svg?targetFile=requirements.txt)](https://snyk.io//test/github/trjahnke/corgi_texter?targetFile=requirements.txt) [![Build Status](https://travis-ci.org/trjahnke/corgi_texter.svg?branch=master)](https://travis-ci.org/trjahnke/corgi_texter)
 <br/>
 Corgi Texter is a two fold application. First and foremost it gives a user quick access to fun facts about corgis. By texting (612)324-8563 you will receive a text with a fun fact and source for that fact to impress your friends and family. This section uses Twilio to handle the number and routing for it. Second, is the front end of the system. It has a mostly fully fledged site which allows you to view all facts that are possible to get via the text. The site also allows users to create an account in order to submit their own facts to help grow the community. This section utilizes the Flask framework with hosting taking place at Heroku with a basic postgres database attachment.
 
