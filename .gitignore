@@ -11,3 +11,5 @@ site.db
 envVar
 
 .coverage
+
+.pytest_cache
