@@ -1,7 +1,7 @@
 import os
 import tempfile
 import pytest
-from corgiTexter import app
+from core import app
 
 
 @pytest.fixture

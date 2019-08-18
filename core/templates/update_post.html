@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="column is-three-fifths is-offset-one-fifth">
+    <article class="box">
+        <h2><strong>Text<a href="sms:(612)324-8563"> (612)324-8563 </a> for a happy random fact about our good corgi pals!</strong></h2>
+    </article>
+
+
+    <form method="POST" action="">
+    {{ form.hidden_tag() }}
+        <div class='container'>
+            <div class="field">
+                <div class="control has-icons-left has-icons-right">           
+                {% if form.fact.errors %}
+                    <div class="invalid-feedback">
+                        {% for error in form.fact.errors %}
+                            {{ form.fact(class="input is-large is-rounded is-danger", type="text", placeholder="Fact") }}
+                            <span>{{ error }}</span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                        {{ form.fact.label(class="form-control-label") }}
+                        {{ form.fact(class="input is-large is-rounded", type="text", placeholder="Fact") }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="field">
+                <div class="control has-icons-left has-icons-right">      
+                    {% if form.source.errors %}
+                        <div class="invalid-feedback">
+                            {% for error in form.source.errors %}
+                                {{ form.source(class="input is-large is-rounded is-danger", type="source", placeholder="Source") }}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.source.label(class="form-control-label") }}
+                        {{ form.source(class="input is-large is-rounded", type="source", placeholder="Source") }}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="field is-grouped is-grouped-centered">
+                <div class="control">
+                    {{ form.update(class="button is-link is-rounded is-success is-medium") }}
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{% endblock content %}

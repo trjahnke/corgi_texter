@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+$navbar-height: 1rem;
+$is-light: #45969b;
+
+
+//small screen sizes
+@media (max-width: 991px) {
+  .logo-image {
+    width: 5rem;
+    height: 2.5rem;
+  }
+}
+
+//medium+ screen sizes
+@media (min-width:992px) {
+
+  .logo-image {
+    width: 10rem;
+    height:  5rem;
+  }
+}
+
+.control {
+  margin: 0.75rem;
+}
+
+.footer {
+  background-color: white;
+  padding: 1rem;
+  height: 150px;
+  margin-top: 3rem;
+}
+
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -150px; 
+  padding: 0px;
+}
+.page-wrap:after {
+  height: 142px; 
+  padding: 0px;
+}
+
+.fact-size {
+  font-size: 2rem;
+}
+
+
+
+// Import a Google Font
+@import "../bulma-0.7.5/bulma.sass";
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+@import "../bulma-0.7.5/sass/utilities/initial-variables";
+@import "../bulma-0.7.5/sass/components/navbar.sass";
+
+
+
+
+
