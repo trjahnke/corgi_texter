@@ -16,10 +16,7 @@ def load_user(user_id):
 class MyAdminIndexView(AdminIndexView):
     def is_accessible(self):
         if current_user.is_authenticated:
-            if current_user.admin_level == 2 or current_user.admin_level == 1:
-                return True
-            else: 
-                return False
+            return current_user.admin_level in [2, 1]
         else:
             return False
 
@@ -43,20 +40,14 @@ class MyAdminIndexView(AdminIndexView):
 class MyModelViewUser(ModelView):
     column_list = ('username', 'email', 'image_file', 'active', 'admin_level', 'id')
     def is_accessible(self):
-        if current_user.is_authenticated and current_user.admin_level == 2:
-            return True
-        else: 
-            return False
+        return bool(current_user.is_authenticated and current_user.admin_level == 2)
 
 class MyModelViewPost(ModelView):
     column_labels = {'author.username':'Username'}
     column_list = ['fact', 'source', 'date_posted', 'author.username']
     
     def is_accessible(self):
-        if current_user.is_authenticated and current_user.admin_level == 2:
-            return True
-        else: 
-            return False
+        return bool(current_user.is_authenticated and current_user.admin_level == 2)
             
     def inaccessible_callback(self, name, **kwargs):
         return redirect(url_for('login'))
